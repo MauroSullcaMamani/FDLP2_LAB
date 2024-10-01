@@ -84,6 +84,6 @@ public class DemoBatalla {
         return misNavesDes;
     }
     //Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados 
-    //pero aleatoriamente desordenados
+    //pero aleatoriamente desordenados.
     
 }
