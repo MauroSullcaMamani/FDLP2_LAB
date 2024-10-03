@@ -60,7 +60,7 @@ public class Nave {
         return "Nave{" + "nombre=" + nombre + ", fila=" + fila + ", columna=" + columna + ", estado=" + estado + ", puntos=" + puntos + '}';
     }
     
-    public String NavePunto() {
+    public String navePunto() {
         return "Nave{" + "nombre=" + nombre + ", puntos=" + puntos + '}';
     }
     
