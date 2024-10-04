@@ -11,24 +11,27 @@ package FP2_Lab03;
 
 public class Actividad05 {
     public static void main(String[] args) {
-        String[] ejercito1=inicializarEjercito((int) (Math.random()*5+1));
-        String[] ejercito2=inicializarEjercito((int) (Math.random()*5+1));
+        Soldado[] ejercito1=inicializarEjercito((int) (Math.random()*5+1));
+        Soldado[] ejercito2=inicializarEjercito((int) (Math.random()*5+1));
         mostrarEjercito(ejercito1,1);
         mostrarEjercito(ejercito2,2);
         mostrarGanador(ejercito1,ejercito2);
     }
-    public static String[] inicializarEjercito(int num){
-        String[] ejercito=new String[num];
-        for(int i=0;i<ejercito.length;i++)
-            ejercito[i]="soldado"+i;
+    public static Soldado[] inicializarEjercito(int num){
+        Soldado[] ejercito=new Soldado[num];
+        for(int i=0;i<ejercito.length;i++){
+            Soldado soldado1=new Soldado();
+            soldado1.setNombre("soldado"+i);
+            ejercito[i]=soldado1;
+        }
         return ejercito;
     }
-    public static void mostrarEjercito(String[] ejercito,int tipo){
+    public static void mostrarEjercito(Soldado[] ejercito,int tipo){
         System.out.println("\nEjercito "+tipo+": ");
         for(int i=0;i<ejercito.length;i++)
-            System.out.println(ejercito[i]);      
+            System.out.println(ejercito[i].getNombre());      
     }
-    public static void mostrarGanador(String[] ejercito1,String[] ejercito2){
+    public static void mostrarGanador(Soldado[] ejercito1,Soldado[] ejercito2){
         if(ejercito1.length>ejercito2.length)
             System.out.println("\nGana el ejercito 1 con "+ejercito1.length+" soldados.");
         else if(ejercito1.length<ejercito2.length)
