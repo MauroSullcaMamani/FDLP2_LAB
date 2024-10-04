@@ -13,16 +13,17 @@ import java.util.*;
 public class Actividad04 {
     public static void main(String[] args) {
         Scanner scan=new Scanner(System.in);
-        String[] soldados=new String[5];
-        int[] vidas=new int[5];
+        Soldado[] soldados=new Soldado[5];
         for(int i=0;i<soldados.length;i++){
+            Soldado soldado1=new Soldado();
             System.out.println("Ingrese el nombre del soldado "+(i+1)+": ");
-            soldados[i]=scan.next();
+            soldado1.setNombre(scan.next());
+            System.out.println("Ingrese la vida de su soldado: ");
+            soldado1.setVida(scan.nextInt());
+            soldados[i]=soldado1;
         }
-        for(int j=0;j<vidas.length;j++)
-            vidas[j]=(int) (Math.random()*5+1);
         System.out.println("NOMBRE \t VIDA");
         for(int k=0;k<soldados.length;k++)
-            System.out.println(soldados[k]+" -> "+vidas[k]);
+            System.out.println(soldados[k].toString());
     }
 }
