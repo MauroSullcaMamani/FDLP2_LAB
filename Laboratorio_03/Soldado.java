@@ -9,9 +9,11 @@ package Laboratorio_03;
  * @author Mauro Snayder
  */
 public class Soldado {
+    // Creamos los atributos
     private String nombre;
     private int vida;
-
+    
+    // Creamos los Set y Get de cada atributo
     public String getNombre() {
         return nombre;
     }
@@ -27,6 +29,7 @@ public class Soldado {
     public void setVida(int vida) {
         this.vida = vida;
     }
+    // Creamos el toString
     public String toString() {
         return nombre+"\t->"+vida;
     }

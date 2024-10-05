@@ -10,12 +10,14 @@ package Laboratorio_03;
  */
 
 public class Nave {
+    // Creamos los atributos
     private String nombre;
     private int fila;
     private String columna;
     private boolean estado;
     private int puntos;
-
+    
+    // Creamos los Set y Get de cada atributo
     public String getNombre() {
         return nombre;
     }
@@ -55,7 +57,8 @@ public class Nave {
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }
-
+    
+    // Creamos el toString y un metodo que imprimirá el nombre y puntos
     public String toString() {
         return "Nave{" + "nombre=" + nombre + ", fila=" + fila + ", columna=" + columna + ", estado=" + estado + ", puntos=" + puntos + '}';
     }
