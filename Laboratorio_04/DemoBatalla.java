@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package laboratorio_5.DemoBatalla;
+package laboratorio_04;
 
 /**
  *
@@ -132,7 +132,7 @@ public class DemoBatalla {
         Nave cambio;
         for (int i=0;i<flota.length-1;i++){
             for (int j=0;j<flota.length-1-i;j++){
-                if (flota[j].getPuntos()>flota[j].getPuntos()){
+                if (flota[j].getPuntos()>flota[j+1].getPuntos()){
                     cambio=flota[j];
                     flota[j]=flota[j+1];
                     flota[j+1]=cambio;
@@ -146,7 +146,7 @@ public class DemoBatalla {
         Nave cambio;
         for (int i=0;i<flota.length-1;i++){
             for (int j=0;j<flota.length-1-i;j++){
-                if (flota[j].getNombre().compareTo(flota[j].getNombre())>0){
+                if (flota[j].getNombre().compareTo(flota[j+1].getNombre())>0){
                     cambio=flota[j];
                     flota[j]=flota[j+1];
                     flota[j+1]=cambio;
@@ -177,12 +177,13 @@ public class DemoBatalla {
         int posMenor;
         for (int i=0;i<flota.length-1;i++){
             posMenor=posicionPuntosMenor(i,flota);
-
+            if (flota[i].getPuntos()>flota[posMenor].getPuntos()){
                 cambio=flota[i];
                 flota[i]=flota[posMenor];
                 flota[posMenor]=cambio;
             }
-    } 
+        } 
+    }
 
     //Método que ordena por nombre de A a Z 
     public static void ordenarPorNombreSeleccion(Nave[] flota){
@@ -190,51 +191,60 @@ public class DemoBatalla {
         int posMenor;
         for (int i=0;i<flota.length-1;i++){
             posMenor=posicionNombreMenor(i,flota);
-            
+            if (flota[i].getNombre().compareTo(flota[posMenor].getNombre())>0){
                 cambio=flota[i];
                 flota[i]=flota[posMenor];
                 flota[posMenor]=cambio;
-            
+            }
         }
     } 
 
     //Método que muestra las naves ordenadas por número de puntos de mayor a menor 
     public static void ordenarPorPuntosInsercion(Nave[] flota){ 
-        for (int i=1;i<flota.length;i++){
-            int puntoComparacion=flota[i].getPuntos(),j;
-            for (j=i-1;j>=0 && flota[j].getPuntos()>puntoComparacion;j--){
-                flota[j+1]=flota[j];
-            }
+        for (int i=1;i<flota.length;i++) {
+        Nave naveComparacion=flota[i];  // Guarda la nave en la posición actual
+        int puntoComparacion=flota[i].getPuntos();  // Obtiene los puntos de la nave actual
+        int j;
+        // Mueve los elementos mayores a la derecha
+        for (j=i-1;j>=0 && flota[j].getPuntos()>puntoComparacion;j--) {
+            flota[j+1] = flota[j];  // Desplaza hacia adelante
+        }
+        // Inserta la nave en la posición correcta
+        flota[j+1]=naveComparacion;  // Coloca la nave en la posición correcta
         }
     } 
 
     //Método que muestra las naves ordenadas por nombre de Z a A 
     public static void ordenarPorNombreInsercion(Nave[] flota){ 
-
+        for (int i=1;i<flota.length;i++) {
+        Nave naveComparacion=flota[i];  // Guarda la nave en la posición actual
+        String nombreComparacion=flota[i].getNombre();  // Obtiene los puntos de la nave actual
+        int j;
+        // Mueve los elementos mayores a la derecha
+        for (j=i-1;j>=0 && flota[j].getNombre().compareTo(nombreComparacion)>0;j--) {
+            flota[j+1]=flota[j];  // Desplaza hacia adelante
+        }
+        // Inserta la nave en la posición correcta
+        flota[j+1]=naveComparacion;  // Coloca la nave en la posición correcta
+        }
     }
     
     //Metodo que halla la posicion de la nave con menor puntaje
     public static int posicionPuntosMenor(int inicio,Nave[] flota){
-        Nave numMenor=flota[inicio];
         int posMenor=inicio;
         for (int i=inicio+1;i<flota.length;i++){
-            if (numMenor.getPuntos()>flota[i].getPuntos()){
-                numMenor=flota[i];
-                posMenor=i;
-            }
+            if (flota[posMenor].getPuntos()>flota[i].getPuntos())
+                posMenor=i;          
         }
         return posMenor;
     }
     
     //Metodo que halla la posicion de la nave con un nombre cercano a "Z"
     public static int posicionNombreMenor(int inicio,Nave[] flota){
-        Nave nomMenor=flota[inicio];
         int posMenor=inicio;
         for (int i=inicio+1;i<flota.length;i++){
-            if (nomMenor.getNombre().compareTo(flota[i].getNombre())>0){
-                nomMenor=flota[i];
-                posMenor=i;
-            }
+            if (flota[posMenor].getNombre().compareTo(flota[i].getNombre())>0)
+                posMenor=i;          
         }
         return posMenor;
     }
