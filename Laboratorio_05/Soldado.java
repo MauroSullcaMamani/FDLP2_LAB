@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package laboratorio;
+package Laboratorio_05;
 
 /**
  *
@@ -39,8 +39,8 @@ public class Soldado {
     }
     
     public void aleatorio(int fila,int columna){
-        this.fila=(int)(Math.random()*fila+1);
-        this.columna=(int)(Math.random()*columna+1);
+        this.fila=(int)(Math.random()*fila);
+        this.columna=(int)(Math.random()*columna);
     }
     // Creamos el toString
     public String toString() {
