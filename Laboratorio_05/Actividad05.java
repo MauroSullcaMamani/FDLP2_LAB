@@ -12,13 +12,9 @@ package Laboratorio_05;
 public class Actividad05 {
     public static void main(String[] args) {
         // Inicializamos dos ejércitos con un número aleatorio de soldados entre 1 y 5
-        int fila=(int)(Math.random()*5+1);//Generamos la fila de la tabla
-        int columna=(int)(Math.random()*5+1);//Generamos la columna de la tabla
-        int numSoldadosPrevio=(int)(Math.random()*10+1);//Generamos la cantidad de soldados
-        //Tomamos el valor menor entre la cantidad de soldados y el numero de espacios que tiene la tabla
-        //ya que puede ocurrir que la cantidad de soldados sea mayor a los espacios de la tabla, lo cual
-        //daria un error
-        int numSoldados=Math.min(numSoldadosPrevio,fila*columna);
+        int fila=10;//Generamos la fila de la tabla
+        int columna=10;//Generamos la columna de la tabla
+        int numSoldados=(int)(Math.random()*10+1);//Generamos la cantidad de soldados
         Soldado[][] ejercito1=new Soldado[fila][columna];
         for (int i=0;i<ejercito1.length;i++){//inicializamosel arreglo con soldados sin datos
             for (int j=0;j<ejercito1[i].length;j++)
