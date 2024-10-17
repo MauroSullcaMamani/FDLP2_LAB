@@ -10,13 +10,11 @@ package Laboratorio_05;
  */
 public class Soldado {
     // Creamos los atributos
-    private String nombre;
-    private int vida=(int)(Math.random()*5+1);
+    private String nombre="________";
+    private int vida;
     private int fila;
     private int columna;
-    public Soldado(){
-        this.nombre="________";
-    }
+
     // Creamos los Set y Get de cada atributo
     public String getNombre() {
         return nombre;
@@ -37,13 +35,17 @@ public class Soldado {
     public int getColumna(){
         return columna;
     }
-    
-    public void aleatorio(int fila,int columna){
+    //Generamos una posicion aleatoria para el soldado
+    public void aleatorioPosicion(int fila,int columna){
         this.fila=(int)(Math.random()*fila);
         this.columna=(int)(Math.random()*columna);
     }
+    //Generamos la vida del soldado
+    public void aleatorioVida(){
+        this.vida=(int)(Math.random()*5+1);
+    }
     // Creamos el toString
     public String toString() {
-        return nombre+"\t->"+vida;
+        return "Soldado{" + "nombre=" + nombre + ", vida=" + vida + ", fila=" + fila + ", columna=" + columna + "}\n";
     }
 }
