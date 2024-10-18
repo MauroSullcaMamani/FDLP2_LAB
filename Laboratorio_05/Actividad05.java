@@ -41,17 +41,19 @@ public class Actividad05 {
                 persona.aleatorioVida();//generamos la vida
             }
             //El bucle se repite si en una posicion aleatoria ya existe un soldado puesto
-            while(!ejercito[persona.getFila()][persona.getColumna()].getNombre().equals("________"));
+            while(!ejercito[persona.getFila()][persona.getColumna()].getNombre().equals("        "));
             ejercito[persona.getFila()][persona.getColumna()]=persona;//ponemos el soldado dentro del arreglo
         }
     }
     // Metodo para mostrar la tabla
     public static void mostrarEjercitoTabla(Soldado[][] ejercito){
+        System.out.println(" ________ ________ ________ ________ ________ ________ ________ ________ ________ ________");
         for (int i=0;i<ejercito.length;i++){
             System.out.print("|");
             for (int j=0;j<ejercito[i].length;j++)
                 System.out.print(ejercito[i][j].getNombre()+"|");           
             System.out.println();
+            System.out.println("|________|________|________|________|________|________|________|________|________|________|");
         }
     }
     //Metodo para determinar el soldado con mayor vida
@@ -80,7 +82,7 @@ public class Actividad05 {
         int copiar=0;
         for (int j=0;j<ejercito.length;j++){//Copiamos el arreglo bidimensional a un unidimensional
             for (int k=0;k<ejercito[j].length;k++){//ya que es mas facil ordenarlos
-                if (!ejercito[j][k].getNombre().equals("________")){
+                if (!ejercito[j][k].getNombre().equals("        ")){
                     list[copiar]=ejercito[j][k];
                     copiar++;
                 }
@@ -97,7 +99,7 @@ public class Actividad05 {
         int copiar=0;
         for (int j=0;j<ejercito.length;j++){//Copiamos el arreglo bidimensional a un unidimensional
             for (int k=0;k<ejercito[j].length;k++){//ya que es mas facil ordenarlos
-                if (!ejercito[j][k].getNombre().equals("________")){
+                if (!ejercito[j][k].getNombre().equals("        ")){
                     listRankT[copiar]=ejercito[j][k];
                     copiar++;
                 }
