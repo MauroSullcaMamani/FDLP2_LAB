@@ -10,7 +10,7 @@ package Laboratorio_05;
  */
 public class Soldado {
     // Creamos los atributos
-    private String nombre="________";
+    private String nombre="        ";
     private int vida;
     private int fila;
     private int columna;
