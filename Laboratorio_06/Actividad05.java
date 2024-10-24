@@ -36,7 +36,7 @@ public class Actividad05 {
         System.out.println("\nEl ranking de los soldados es: ");
         rankingSoldadosV1(ejercito1,1);
         rankingSoldadosV2(ejercito2,2);
-        
+        ganador(ejercito1,ejercito2);
     }
     // Método para inicializar una tabla con cierto numeros de soldados
     public static void inicializarEjercito(ArrayList<ArrayList<Soldado>> tabla,ArrayList<Soldado> ejercito,int tipo){
@@ -129,5 +129,15 @@ public class Actividad05 {
             }
             lista.set(j+1,soldadoActual);
         }
+    }
+    //Determinar el ganador de la batalla (por la cantidad de soldados que tiene cada ejercito)
+    //Gana el ejercito que tiene mas soldados.
+    public static void ganador(ArrayList<Soldado> ejercito1,ArrayList<Soldado> ejercito2){
+        if (ejercito1.size()>ejercito2.size())
+            System.out.println("\nGana el ejercito 1.");
+        else if (ejercito1.size()<ejercito2.size())
+            System.out.println("\nGana el ejercito 2.");
+        else
+            System.out.println("\nQuedan empatados los ejercitos.");
     }
 }
