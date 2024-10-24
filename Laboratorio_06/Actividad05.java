@@ -27,13 +27,16 @@ public class Actividad05 {
         inicializarEjercito(tabla,ejercito1,1);
         inicializarEjercito(tabla,ejercito2,2);
         mostrarEjercitoTabla(tabla);
-        //System.out.print("\nEl soldado con mayor vida es: "+mayorVida(ejercito1).toString());
-        //System.out.println("El promedio de la vida del ejercito es: "+vidaTotal(ejercito1)/numSoldados);
-        //System.out.println("La vida total del ejercito es: "+vidaTotal(ejercito1));
-        //System.out.println("\nLista de los soldados por orden de creacion: ");
-        //mostrarEjercitoOrdenCreacion(ejercito1,numSoldados);
+        System.out.print("\nEl soldado con mayor vida del ejercito 1 es: "+mayorVida(ejercito1).toString());
+        System.out.print("El soldado con mayor vida del ejercito 2 es: "+mayorVida(ejercito2).toString());
+        System.out.println("\nEl promedio de la vida del ejercito 1 es: "+vidaPromedio(ejercito1));
+        System.out.println("El promedio de la vida del ejercito 2 es: "+vidaPromedio(ejercito2));
+        System.out.println("\nLista de los soldados por orden de creacion: ");
+        mostrarEjercitoOrdenCreacion(ejercito1,1);
+        mostrarEjercitoOrdenCreacion(ejercito2,2);
         System.out.println("\nEl ranking de los soldados es: ");
-        //rankingSoldados(ejercito1,numSoldados);
+        rankingSoldadosV1(ejercito1,1);
+        rankingSoldadosV2(ejercito2,2);
         
     }
     // Método para inicializar una tabla con cierto numeros de soldados
@@ -64,83 +67,68 @@ public class Actividad05 {
         }
     }
     //Metodo para determinar el soldado con mayor vida
-    public static Soldado mayorVida(Soldado[][] ejercito){
+    public static Soldado mayorVida(ArrayList<Soldado> ejercito){
         Soldado mayor=new Soldado();//creamos un objeto para almacenar al soldado mayor
-        for (int i=0;i<ejercito.length;i++){
-            for (int j=0;j<ejercito[i].length;j++){
-                if (ejercito[i][j].getVida()>mayor.getVida())
-                    mayor=ejercito[i][j];//actualizamos "mayor" si otro soldado tiene mayor vida
-            }
+        for (Soldado persona:ejercito){
+            if (persona.getVida()>mayor.getVida())
+                mayor=persona;          
         }
         return mayor;
     }
     //Metodo para determinar la vida total de todos los soldados
-    public static double vidaTotal(Soldado[][] ejercito){
+    public static double vidaPromedio(ArrayList<Soldado> ejercito){
         double vidaT=0;//vida inicial
-        for (int i=0;i<ejercito.length;i++){
-            for (int j=0;j<ejercito[i].length;j++)
-                vidaT+=ejercito[i][j].getVida();//sumamos la vida de cada soldado
+        for (Soldado persona:ejercito){
+            vidaT+=persona.getVida();
         }
-        return vidaT;
+        return vidaT/ejercito.size();
     }
     //Metodo para ver las lista de los soldados por el orden de creacion
-    public static void mostrarEjercitoOrdenCreacion(Soldado[][] ejercito,int numSoldados){
-        Soldado[] list=new Soldado[numSoldados];//creamos un arreglo unidimensional.
-        int copiar=0;
-        for (int j=0;j<ejercito.length;j++){//Copiamos el arreglo bidimensional a un unidimensional
-            for (int k=0;k<ejercito[j].length;k++){//ya que es mas facil ordenarlos
-                if (!ejercito[j][k].getNombre().equals("             ")){
-                    list[copiar]=ejercito[j][k];
-                    copiar++;
-                }
-            }
-        }
-        ordenamientoBurbuja(list);//ordenamos el arreglo unidimensional
-        for (int i=0;i<list.length;i++){//imprimimos el arreglo
-            System.out.print(list[i].toString());
+    public static void mostrarEjercitoOrdenCreacion(ArrayList<Soldado> ejercito,int tipo){
+        System.out.println("Ejercito "+tipo+" : ");
+        for (Soldado persona:ejercito){//imprimimos el arreglo
+            System.out.print(persona.toString());
         }
     }
     //Metodo para ver el ranking de los soldados (por vida)
-    public static void rankingSoldados(Soldado[][] ejercito,int numSoldados){
-        Soldado[] listRankT=new Soldado[numSoldados];//creamos un arreglo unidimensional.
-        int copiar=0;
-        for (int j=0;j<ejercito.length;j++){//Copiamos el arreglo bidimensional a un unidimensional
-            for (int k=0;k<ejercito[j].length;k++){//ya que es mas facil ordenarlos
-                if (!ejercito[j][k].getNombre().equals("           ")){
-                    listRankT[copiar]=ejercito[j][k];
-                    copiar++;
-                }
-            }
-        }
-        ordenamientoInsercion(listRankT);//ordenamos el arreglo unidimensional
-        for (int i=0,j=listRankT.length-1;j>=0;i++,j--){//imprimimos el arreglo
-            System.out.print((i+1)+" -> "+listRankT[j].toString());
+    public static void rankingSoldadosV1(ArrayList<Soldado> ejercito,int tipo){
+        ordenamientoBurbuja(ejercito);//ordenamos el arreglo unidimensional
+        System.out.println("Ejercito "+tipo+" : ");
+        for (int i=ejercito.size()-1;i>=0;i--){//imprimimos el arreglo
+            System.out.print(ejercito.get(i).toString());
         }
     }
-    //Metodo de ordenamiento burbuja para los nombres de los soldados, ya que de esa
-    //manera podemos ver el orden de creacion de los soldados
-    public static void ordenamientoBurbuja(Soldado[] lista){
+    //Metodo para ver el ranking de los soldados (por vida)
+    public static void rankingSoldadosV2(ArrayList<Soldado> ejercito,int tipo){
+        ordenamientoInsercion(ejercito);//ordenamos el arreglo unidimensional
+        System.out.println("Ejercito "+tipo+" : ");
+        for (int i=ejercito.size()-1;i>=0;i--){//imprimimos el arreglo
+            System.out.print(ejercito.get(i).toString());
+        }
+    }
+    //Metodo de ordenamiento Burbuja para la vida de los soldados
+    public static void ordenamientoBurbuja(ArrayList<Soldado> lista){
         Soldado cambio;
-        for(int i=0;i<lista.length-1;i++){
-            for(int j=0;j<lista.length-i-1;j++){
-                if(lista[j].getNombre().compareTo(lista[j+1].getNombre())>0){
-                    cambio=lista[j];
-                    lista[j]=lista[j+1];
-                    lista[j+1]=cambio;
+        for(int i=0;i<lista.size()-1;i++){
+            for(int j=0;j<lista.size()-i-1;j++){
+                if (lista.get(j).getVida()>lista.get(j+1).getVida()){
+                    cambio=lista.get(j);
+                    lista.set(j,lista.get(j+1));
+                    lista.set(j+1,cambio);
                 }
             }
         }
     }
     //Metodo de ordenamiento de insersion para la vida de los soldados
-    public static void ordenamientoInsercion(Soldado[] lista) {
-        for (int i=1;i<lista.length;i++) {
-            Soldado soldadoActual=lista[i];
+    public static void ordenamientoInsercion(ArrayList<Soldado> lista) {
+        for (int i=1;i<lista.size();i++){
+            Soldado soldadoActual=lista.get(i);
             int j=i-1;
-            while (j>=0 && lista[j].getVida()>soldadoActual.getVida()){
-                lista[j+1]=lista[j];
+            while (j>=0 && lista.get(j).getVida()>soldadoActual.getVida()){
+                lista.set(j+1,lista.get(j));
                 j--;
             }
-            lista[j+1]=soldadoActual;
+            lista.set(j+1,soldadoActual);
         }
     }
 }
