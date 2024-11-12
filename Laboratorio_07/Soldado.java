@@ -14,6 +14,7 @@ public class Soldado {
     private int vida;
     private int fila;
     private int columna;
+    private String color;
 
     // Creamos los Set y Get de cada atributo
     public String getNombre() {
@@ -23,9 +24,17 @@ public class Soldado {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    public void setColor(String color){
+        this.color=color;
+    }
 
     public int getVida() {
         return vida;
+    }
+    
+    public void printVida(){
+        System.out.print(color+vida+"\u001B[0m");
     }
     
     public int getFila(){
