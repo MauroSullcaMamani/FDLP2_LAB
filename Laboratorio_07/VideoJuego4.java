@@ -14,17 +14,17 @@ public class VideoJuego4 {
     public static void main(String[] args) {
         Scanner scan=new Scanner(System.in);
         
-        while(true){
+        while(true){//Creamos un bucle para hacerlo iterativo
             Soldado[][] tabla=new Soldado[10][10];//Creamos la tabla
-        ArrayList<Soldado> ejercito1=new ArrayList<Soldado>();//Creamos ejercito 1
-        ArrayList<Soldado> ejercito2=new ArrayList<Soldado>();//Creamos ejercito 2
-        for (int i=0;i<tabla.length;i++){//Inicializamos el tablero con valores vacios
-            for (int j=0;j<tabla[i].length;j++){
-                tabla[i][j]=new Soldado();
+            ArrayList<Soldado> ejercito1=new ArrayList<Soldado>();//Creamos ejercito 1
+            ArrayList<Soldado> ejercito2=new ArrayList<Soldado>();//Creamos ejercito 2
+            for (int i=0;i<tabla.length;i++){//Inicializamos el tablero con valores vacios
+                for (int j=0;j<tabla[i].length;j++){
+                    tabla[i][j]=new Soldado();
+                }
             }
-        }
-            inicializarEjercito(tabla,ejercito1,1,"\033[1;31m");//El ejercito 1 será de color rojo
-            inicializarEjercito(tabla,ejercito2,2,"\033[1;34m");//El ejercito 2 seá de color azul
+            inicializarEjercito(tabla,ejercito1,"\033[1;31m");//El ejercito 1 será de color rojo
+            inicializarEjercito(tabla,ejercito2,"\033[1;34m");//El ejercito 2 seá de color azul
             mostrarEjercitoTabla(tabla);
             System.out.print("\nEl soldado con mayor vida del ejercito 1 es: "+mayorVida(ejercito1).toString());
             System.out.print("El soldado con mayor vida del ejercito 2 es: "+mayorVida(ejercito2).toString());
@@ -44,7 +44,7 @@ public class VideoJuego4 {
         }
     }
     // Método para inicializar una tabla con cierto numeros de soldados
-    public static void inicializarEjercito(Soldado[][] tabla,ArrayList<Soldado> ejercito,int tipo,String color){
+    public static void inicializarEjercito(Soldado[][] tabla,ArrayList<Soldado> ejercito,String color){
         int numSoldados=(int) (Math.random()*10+1);//Genemos la cantidad de soldados
         for (int i=0;i<numSoldados;i++){
             Soldado persona=new Soldado();//creamos "persona" para luego ponerlo dentro del tablero y del Array del ejercito

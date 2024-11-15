@@ -25,6 +25,7 @@ public class Soldado {
         this.nombre = nombre;
     }
     
+    //Medoto para saber a que tipo de ejercito pertenece el soldado
     public void setColor(String color){
         this.color=color;
     }
@@ -33,6 +34,7 @@ public class Soldado {
         return vida;
     }
     
+    //Metodo para darle color a "vida"
     public void printVida(){
         System.out.print(color+vida+"\u001B[0m");
     }
