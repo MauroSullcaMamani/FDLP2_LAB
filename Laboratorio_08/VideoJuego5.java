@@ -104,22 +104,22 @@ public class VideoJuego5 {
     }
     //Metodo para ver el ranking de los soldados version 1(por vida)
     public static void rankingSoldadosV1(HashMap<String,Soldado> ejercito,int tipo){
-        ordenamientoBurbuja(ejercito);//ordenamos el Array Unidimencional
+        ArrayList<Soldado> ejercitoList=ordenamientoBurbuja(ejercito);//ordenamos el Array Unidimencional
         System.out.println("Ejercito "+tipo+" : ");
-        for (String persona:ejercito.keySet()){//imprimimos el Array
-            System.out.print(ejercito.get(persona).toString());
+        for (int i=ejercitoList.size()-1;i>=0;i--) { //imprimimos el Array
+            System.out.print(ejercitoList.get(i).toString());
         }
     }
     //Metodo para ver el ranking de los soldados version 2(por vida)
     public static void rankingSoldadosV2(HashMap<String,Soldado> ejercito,int tipo){
-        ordenamientoInsercion(ejercito);//ordenamos el Array Unidimencional
+        ArrayList<Soldado> ejercitoList=ordenamientoInsercion(ejercito);//ordenamos el Array Unidimencional
         System.out.println("Ejercito "+tipo+" : ");
-        for (Soldado persona:ejercito.values()){//imprimimos el Array
-            System.out.print(persona.toString());
+        for (int i=ejercitoList.size()-1;i>=0;i--) { //imprimimos el Array
+            System.out.print(ejercitoList.get(i).toString());
         }
     }
     //Metodo de ordenamiento Burbuja para la vida de los soldados
-    public static void ordenamientoBurbuja(HashMap<String,Soldado> lista){
+    public static ArrayList<Soldado> ordenamientoBurbuja(HashMap<String,Soldado> lista){
         ArrayList<Soldado> list=new ArrayList<Soldado>(lista.values());
         Soldado cambio;
         for(int i=0;i<lista.size()-1;i++){
@@ -131,13 +131,10 @@ public class VideoJuego5 {
                 }
             }
         }
-        lista.clear();
-        for (Soldado persona:lista.values()){
-            lista.put(persona.getNombre(),persona);
-        }
+        return list;
     }
     //Metodo de ordenamiento de insersion para la vida de los soldados
-    public static void ordenamientoInsercion(HashMap<String,Soldado> lista) {
+    public static ArrayList<Soldado> ordenamientoInsercion(HashMap<String,Soldado> lista) {
         ArrayList<Soldado> list=new ArrayList<Soldado>(lista.values());
         for (int i=1;i<list.size();i++){
             Soldado soldadoActual=list.get(i);
@@ -148,10 +145,7 @@ public class VideoJuego5 {
             }
             list.set(j+1,soldadoActual);
         }
-        lista.clear();
-        for (Soldado persona:lista.values()){
-            lista.put(persona.getNombre(),persona);
-        }
+        return list;
     }
     //Determinar el ganador de la batalla (por la cantidad de soldados que tiene cada ejercito)
     //Gana el ejercito que tiene mas soldados.
