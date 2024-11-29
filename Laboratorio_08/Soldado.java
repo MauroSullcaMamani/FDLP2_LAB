@@ -25,7 +25,7 @@ public class Soldado {
         this.nombre = nombre;
     }
     
-    //Medoto para saber a que tipo de ejercito pertenece el soldado
+    //Metodo para saber a que tipo de ejercito pertenece el soldado
     public void setColor(String color){
         this.color=color;
     }
